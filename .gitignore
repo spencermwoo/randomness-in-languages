@@ -1,1 +1,19 @@
-.DS_Store
+**/desktop.ini
+_site/**
+CNAME
+.travis.yml
+.idea/
+.vscode/
+
+# Vim ignore
+# source: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+lib
+bin
+includes

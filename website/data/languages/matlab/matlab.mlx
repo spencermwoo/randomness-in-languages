@@ -1,0 +1,26 @@
+% Set the number of random numbers to generate and the upper bound for the numbers
+n = 10;
+x = 100;
+
+% Generate N random numbers between 1 and X
+numbers = randi(x, 1, n);
+
+% Calculate the probability of each number
+counts = hist(numbers, 1:x);
+total = numel(numbers);
+probabilities = counts / total;
+
+% Generate a file name based on the values of N and X
+fileName = sprintf('matlab_%d_%d.csv', n, x);
+
+% Create the "outputs" directory if it does not exist
+if exist('outputs', 'dir') ~= 7
+    mkdir('outputs');
+end
+
+% Write the probabilities to a file in the "outputs" directory
+fileID = fopen(['outputs/' fileName], 'w');
+for i = 1:x
+    fprintf(fileID, '%d,%f\n', i, probabilities(i));
+end
+fclose(fileID);

@@ -16,4 +16,16 @@ CNAME
 
 lib
 bin
+include
 includes
+
+node_modules
+.env
+.private
+.ssh
+
+.DS_Store
+*.cfg
+
+.cache/
+public

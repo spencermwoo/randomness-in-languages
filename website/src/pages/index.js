@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Layout from '../components/layout'
-import { StaticImage } from 'gatsby-plugin-image'
 import Seo from '../components/seo'
 
 const IntroductionPage = () => {
@@ -58,11 +57,6 @@ const IntroductionPage = () => {
       </p>
     </Layout>
   )
-
-  // <StaticImage
-  //       alt="Clifford, a reddish-brown pitbull, dozing in a bean bag chair"
-  //       src="../images/clifford.jpg"
-  //     />
 }
 
 export const Head = () => <Seo title="Introduction" />

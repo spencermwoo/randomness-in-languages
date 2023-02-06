@@ -1,19 +1,10 @@
 import matplotlib.pyplot as plt
 
-from util import read_output_files_and_perform, parse
+from util import read_output_files_and_perform, perform_per_language, parse
 
 # this plots multiple result files
 def multiplot(languages, numbers, trials):
-	for language in languages:
-		x, y = [], []
-		filename = f'{language}_{numbers}_{trials}'
-		with open(filename) as file:
-			for line in file:
-				n, probability = parse(line)
-
-				x.append(n)
-				y.append(probability)
-
+	for language, filename, x, y in perform_per_language(languages, numbers, trials):
 		_plot(x, y, language)
 
 	_plot_graph('number', 'probability', f'{numbers}_{trials}', True)

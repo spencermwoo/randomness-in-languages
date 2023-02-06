@@ -9,6 +9,19 @@ def read_output_files_and_perform(func, *args):
 		trials = option[1]
 		func(languages, numbers, trials, *args)
 
+def perform_per_language(languages, numbers, trials):
+	for language in languages:
+		x, y = [], []
+		filename = f'{language}_{numbers}_{trials}'
+		with open(filename) as file:
+			for line in file:
+				n, probability = parse(line)
+
+				x.append(n)
+				y.append(probability)
+
+		yield (language, filename, x,y)
+
 def parse(line):
 	s = line.split(":")
 	

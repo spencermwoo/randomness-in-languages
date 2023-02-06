@@ -5,6 +5,13 @@ from graph import plot_all_multi, plot_all_individual
 
 analysis_all()
 
+# plot_one('go', 10, 1000000)
+# plot_all_individual(True)
+# plot_all_multi()
+
+
+# ===
+
 # languages = get_languages()
 # print(languages)
 

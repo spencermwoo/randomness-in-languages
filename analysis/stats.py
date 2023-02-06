@@ -1,7 +1,7 @@
 import statistics as st
 import heapq
 
-from util import read_output_files_and_perform, parse
+from util import read_output_files_and_perform, perform_per_language
 
 def calculate_standard_deviation(language, data, sample_size):
 	if language == 'expected': 
@@ -19,16 +19,8 @@ def calculate_standard_deviation(language, data, sample_size):
 def analysis_one(languages, numbers, trials):
 	resHeap = []
 	heapq.heapify(resHeap)
-	for language in languages:
-		x, y = [], []
-		filename = f'{language}_{numbers}_{trials}'
-		with open(filename) as file:
-			for line in file:
-				n, probability = parse(line)
 
-				x.append(n)
-				y.append(probability)
-
+	for language, filename, x, y in perform_per_language(languages, numbers, trials):
 		std = calculate_standard_deviation(language, y, trials)
 		heapq.heappush(resHeap, (std, filename))
 

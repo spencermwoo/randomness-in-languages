@@ -1,2 +1,32 @@
+**/desktop.ini
+_site/**
+CNAME
+.travis.yml
+.idea/
+.vscode/
+
+# Vim ignore
+# source: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+lib
+bin
+include
+includes
+
+node_modules
+.env
+.private
+.ssh
+
 .DS_Store
 __pycache__
+*.cfg
+
+.cache/
+public

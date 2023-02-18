@@ -1,24 +1,22 @@
 import argparse
 
 from stats import analysis_all
-from graph import plot_all_multi, plot_all_individual
+from graph import plot_multis, plot_individuals, plot_analysis
 
+# Analyze statistics
+# ====
 analysis_all()
 
-# plot_one('go', 10, 1000000)
-# plot_all_individual(True)
-# plot_all_multi()
+# Generate graphs
+# ====
+# plot_individuals(True)
+# plot_multis()
 
+# Graph Analysis
+# ====
+# plot_analysis()
 
 # ===
-
-# languages = get_languages()
-# print(languages)
-
-# options = get_options()
-# print(options)
-
-# py analysis.py --file ../outputs/go_10_1000000000
 # if __name__ == '__main__':
 # 	parser = argparse.ArgumentParser(description='argparse')
 # 	parser._action_groups.pop()

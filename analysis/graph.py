@@ -50,18 +50,21 @@ def _plot_graph(x_axis, y_axis, title, save=False):
 
 	plt.clf()
 
-def plot_all_individual(include_expected=False):
-	read_output_files_and_perform(create_analysis, include_expected)
-
-def plot_all_multi():
-	read_output_files_and_perform(multiplot)
-
 def plot_one(language, number, trial):
 	singleplot(language, numbers, trials)
 
 	# multiplot(languages, numbers, trials)
 
+def plot_individuals(include_expected=False):
+	read_output_files_and_perform(create_analysis, include_expected)
+
+def plot_multis():
+	read_output_files_and_perform(multiplot)
+
+def plot_analysis():
+	return
+
 # plot_one('go', 10, 1000000)
-# plot_all_individual(True)
-# plot_all_multi()
+# plot_individuals(True)
+# plot_multis()
 

@@ -12,42 +12,17 @@ const LanguagesPost = (props) => {
   if(!language){
     return
   }
-  // if(!pageContext['name']){
-  //   console.log(props);
-  //   console.log(data.allFile.nodes);
-  // }
-  // console.log(language);
 
   const nodes = data.allFile.nodes;
-
-  // overview language
-  // T1 image
-  // T1 result
-
-  // T2 image
-  // T2 result
-
-  // T3 image
-  // T3 result
-
-  // source
-
-  // node.name -- source_
-  // node.name -- trial
   
   const sourceNode = nodes.filter(node => node.name === language)[0] // required
-  // console.log(sourceNode, language)
-  // console.log(language);
 
-  const imageNodes = nodes.filter(node => node.extension === 'jpg')
+  const imageNodes = nodes.filter(node => node.extension === 'png')
   const resultNodes = nodes.filter(node => node.extension === '' || node.extension === 'txt')
 
-  // console.log(sourceNode)
-  
-  // console.log(imageNodes)
-  // console.log(resultNodes)
-
   const images = imageNodes.map(node => getImage(node.childImageSharp))
+
+  // TODO: Split into trials for display
 
   // node.fields.contents.replaceAll(/\s/g, "\n")
   return (

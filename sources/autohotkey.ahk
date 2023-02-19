@@ -73,7 +73,7 @@ Loop, %Range%{
 	Output .= (A_index - 1) . ":" . Probability[A_index] . "`r"
 }
 
-FileName = ahk_%Range%_%Trials%.txt
+FileName = autohotkey_%Range%_%Trials%.txt
 if (FileName = "")
     Return
 file := FileOpen(FileName, "w")

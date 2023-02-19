@@ -10,9 +10,8 @@ from graph import plot_multis, plot_individuals, plot_analysis
 
 # Graph Analysis
 # ====
-# analysisList = analysis_all()
-# print(analysisList)
-# plot_analysis(analysisList)
+analysisList = analysis_all()
+plot_analysis(analysisList)
 
 # ===
 # if __name__ == '__main__':

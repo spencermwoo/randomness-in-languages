@@ -44,6 +44,9 @@ def singleplot(language, numbers, trials, include_expected=False):
 def _plot(x, y, label):
 	plt.plot(x, y, label=label)
 
+def _bar(x, y):
+	plt.bar(x, y, width=0.4, label=y)
+
 def _plot_graph(x_axis, y_axis, title, save=False):
 	plt.legend(loc='best')
 
@@ -57,10 +60,7 @@ def _plot_graph(x_axis, y_axis, title, save=False):
 
 	plt.clf()
 
-def plot_one(language, number, trial):
-	singleplot(language, numbers, trials)
-
-	# multiplot(languages, numbers, trials)
+# ====
 
 def plot_individuals(include_expected=False):
 	read_output_files_and_perform(singleplot_all, include_expected)
@@ -68,10 +68,20 @@ def plot_individuals(include_expected=False):
 def plot_multis():
 	read_output_files_and_perform(multiplot)
 
-def plot_analysis():
+def plot_analysis(analysisList):
+	numbers, trials = None, None
+	for trialList in analysisList:
+
+		# trialList = normalize_group(trialList)
+		for i, analysis in enumerate(trialList):
+			std, filename = analysis
+
+			language, numbers, trials = filename.split("_")
+
+			# if i==0: plt.axis(ymin=std-perc(std))
+			# elif i==len(trialList)-1: plt.axis(ymax=std+perc(std))
+
+			_bar(language, std)
+		_plot_graph('language', 'std', f'analysis_{numbers}_{trials}', True)
+
 	return
-
-# plot_one('go', 10, 1000000)
-# plot_individuals(True)
-# plot_multis()
-

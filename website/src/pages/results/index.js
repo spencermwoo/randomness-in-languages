@@ -12,7 +12,11 @@ const ResultsPage = ({data, children}) => {
           <article key={node.id}> 
             {node.frontmatter.title} 
             <GatsbyImage
-              image={getImage(node.frontmatter.hero_image)}
+              image={getImage(node.frontmatter.multi_image)}
+              alt=""
+            />
+            <GatsbyImage
+              image={getImage(node.frontmatter.analysis_image)}
               alt=""
             />
             {children}
@@ -30,11 +34,16 @@ export const query = graphql`
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           title
-          hero_image {
+          multi_image {
 	          childImageSharp {
 	            gatsbyImageData
 	          }
 	        }
+          analysis_image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
         }
         id
       }

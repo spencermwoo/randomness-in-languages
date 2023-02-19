@@ -7,7 +7,7 @@ const MethodologyPage = () => {
     <Layout pageTitle="Methodology">
       
       <p>
-        Arbitrarily we conduct three trials on each programming language :
+        This project conducts three tests on each programming language :
         
         <br></br><br></br>
 
@@ -29,31 +29,28 @@ const MethodologyPage = () => {
           <tr><td align="left">Frequency</td><td> : Count the number of occurances for each number </td></tr>
           <tr><td align="left">Percentage</td><td> : Divide the Frequency by the number of Trials </td></tr>
           <tr><td align="left">Output</td><td> : Write each number's occurance precentage </td></tr>
-          <tr><td align="left">Statistics</td><td> : Import the textfile into Excel and calculate useful statistics, like the Q value </td></tr>
+          <tr><td align="left">Statistics</td><td> : Calculate the standard deviation </td></tr>
           <tr><td align="left">Graph</td><td> : Plot the actual and expected results for visualization </td></tr>
         </table>
 
         <br></br><br></br>
-
-        <a href = "https://en.wikipedia.org">Statistical significance</a> is calculated by subtracting the actual probability from the expected probability.
-        <br></br><br></br>
-        <a href = "https://en.wikipedia.org">Variance</a> is the summation of all the squared differences divded by n-1, where n is the degrees of freedom*.
-        <br></br><br></br>
-        <a href = "https://en.wikipedia.org">Standard deviation</a> is the square root of the variance.
-                  
-        <br></br><br></br>
+        <a href ="https://en.wikipedia.org/wiki/Statistical_population">Statistical population</a>: the generated data
+        <br></br>
+        <a href = "https://en.wikipedia.org/wiki/Statistical_significance">Statistical significance</a>: the difference in the actual and expected
+        <br></br>
+        <a href = "https://en.wikipedia.org/wiki/Variance">Variance</a>: the spread of the actual and expected probabilities
+        <br></br>
+        <a href = "https://en.wikipedia.org/wiki/Standard_deviation">Standard deviation</a>: the formatted variance
+        <br></br>
+        <a href = "https://en.wikipedia.org/wiki/Standard_score">Z-score</a>: standard deviation values normalized
         
-        The <a href = "https://en.wikipedia.org">Z-score</a> is 
+        <br></br><br></br>
+        For each of the three tests, compare across all languages to determine which language's PRNG performed more closely to the corresponding expected uniform random distribution.
         
         <br></br><br></br>
-        We then average the Z scores of the particular language and compare across languages.
-        
-        <br></br><br></br><br></br><br></br>
-        Completed Languages : 
-
-
+        View the results here:
         <br></br><br></br>
-        For more information regarding methodology visit : <a href = "https://en.wikipedia.org/wiki/Chi-squared_test">Chi-squared test</a>
+        <center><a href="https://prng.akrasia.dev/results/">https://prng.akrasia.dev/results/</a></center>
       </p>
     </Layout>
   )

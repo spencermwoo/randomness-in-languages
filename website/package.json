@@ -6,11 +6,10 @@
   "author": "Spencer Woo",
   "keywords": [
     "PRNG Analysis",
-    "Analysis",
-    "Spencer",
-    "spencers.dev",
-    "randomness",
-    "statistics"
+    "randomness-in-programming-languages",
+    "randomness-in-languages",
+    "akrasia.dev",
+    "prng.akrasia.dev"
   ],
   "scripts": {
     "dev": "npm run develop",

@@ -10,7 +10,7 @@ def multiplot(languages, numbers, trials, *args):
 	for (language, filename, x, y) in perform_probability_per_language(languages, numbers, trials):
 		_plot(x, y, language)
 
-	_plot_graph('number', 'probability', f'{numbers}_{trials}', True)
+	_plot_graph('number', 'probability', f'multi_{numbers}_{trials}', True)
 
 def singleplot_all(languages, numbers, trials, include_expected):
 	for language in languages:

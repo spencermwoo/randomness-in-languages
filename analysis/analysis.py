@@ -5,8 +5,8 @@ from graph import plot_multis, plot_individuals, plot_analysis
 
 # Generate Graphs
 # ====
-# plot_individuals(True)
-# plot_multis()
+plot_individuals(True)
+plot_multis()
 
 # Graph Analysis
 # ====

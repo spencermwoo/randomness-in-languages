@@ -74,15 +74,22 @@ def plot_analysis(analysisList):
 	for trialList in analysisList:
 
 		# trialList = normalize_group(trialList)
+		# ymin = 0
+		# ymax = 0
 		for i, analysis in enumerate(trialList):
 			std, filename = analysis
 
 			language, numbers, trials = filename.split("_")
 
-			if i==0: plt.axis(ymin=std-perc(std))
-			elif i==len(trialList)-1: plt.axis(ymax=std+perc(std))
+			if i==0: ymin = plt.ylim(ymin=max(std, 0))
+			elif i==len(trialList)-1: plt.ylim(ymax=std)
 
+			# TODO: each language should use the same color in all graphs
 			_bar(language, std)
+
+		# TODO: why y-axis has negative scale (???)
+		# plt.axis(xmin=0, ymin=ymin, ymax=ymax)
+		# print(plt.axis())
 		_plot_graph('language', 'std', f'analysis_{numbers}_{trials}', True)
 
 	return

@@ -4,6 +4,9 @@ An example of random number generation in different programming [languages](/sou
 # hacktoberfest
 A hactoberfest-friendly project
 
+# file structure
+Overview of folder layout
+
 ## Contribute
 Create an example of generating a million random numbers and calculating the percentage for each bucket.  
 

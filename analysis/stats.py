@@ -1,6 +1,6 @@
 import statistics as st
 import heapq
-# from sklearn import preprocessing
+from sklearn import preprocessing
 
 from util import read_output_files_and_perform, perform_probability_per_language
 
@@ -29,11 +29,11 @@ def analysis_one(languages, numbers, trials):
 	# split by trial, however variance is already split
 	return [heapq.heappop(resHeap) for i in range(len(resHeap))]
 
-# def normalize_group(analysisList):
-# 	return preprocessing.minmax_scale(analysisList, feature_range=(analysisList[0], analysisList[-1]))
+def normalize_group(analysisList):
+	return preprocessing.minmax_scale(analysisList, feature_range=(analysisList[0], analysisList[-1]))
 
-# def perc(num):
-# 	return 0
+def perc(num):
+	return 0
 
 def analysis_all():
 	analysisList = read_output_files_and_perform(analysis_one)

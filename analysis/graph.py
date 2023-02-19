@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 
 from util import read_output_files_and_perform, perform_probability_per_language, parse
+from stats import normalize_group, perc
 
 # this plots multiple result files
 def multiplot(languages, numbers, trials, *args):
@@ -78,8 +79,8 @@ def plot_analysis(analysisList):
 
 			language, numbers, trials = filename.split("_")
 
-			# if i==0: plt.axis(ymin=std-perc(std))
-			# elif i==len(trialList)-1: plt.axis(ymax=std+perc(std))
+			if i==0: plt.axis(ymin=std-perc(std))
+			elif i==len(trialList)-1: plt.axis(ymax=std+perc(std))
 
 			_bar(language, std)
 		_plot_graph('language', 'std', f'analysis_{numbers}_{trials}', True)

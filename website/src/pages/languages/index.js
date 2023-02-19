@@ -24,7 +24,10 @@ const LanguagesPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allDirectory(filter: {relativePath: {regex: "/(languages/)/"}}) {
+    allDirectory(
+      filter: {relativePath: {regex: "/(languages/)/"}}
+      sort: {name: ASC}
+    ) {
       nodes {
         id
         name

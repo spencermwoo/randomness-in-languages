@@ -1,13 +1,20 @@
 import matplotlib.pyplot as plt
 
-from util import read_output_files_and_perform, perform_per_language, parse
+from util import read_output_files_and_perform, perform_probability_per_language, parse
 
 # this plots multiple result files
-def multiplot(languages, numbers, trials):
-	for language, filename, x, y in perform_per_language(languages, numbers, trials):
+def multiplot(languages, numbers, trials, *args):
+	# for r in perform_per_language(calculate_probability, languages, numbers=numbers, trials=trials):
+	# 	print(r)
+		
+	for (language, filename, x, y) in perform_probability_per_language(languages, numbers, trials):
 		_plot(x, y, language)
 
 	_plot_graph('number', 'probability', f'{numbers}_{trials}', True)
+
+def singleplot_all(languages, numbers, trials, include_expected):
+	for language in languages:
+		singleplot(language, numbers, trials, include_expected)
 
 # this plots a single result file
 def singleplot(language, numbers, trials, include_expected=False):
@@ -29,7 +36,7 @@ def singleplot(language, numbers, trials, include_expected=False):
 	_plot(x, y, language)
 
 	if include_expected:
-		create_analysis(save_language, numbers, trials)
+		singleplot(save_language, numbers, trials)
 	else:
 		_plot_graph('number', 'probability', f'{language}_{numbers}_{trials}', True)
 
@@ -56,7 +63,7 @@ def plot_one(language, number, trial):
 	# multiplot(languages, numbers, trials)
 
 def plot_individuals(include_expected=False):
-	read_output_files_and_perform(create_analysis, include_expected)
+	read_output_files_and_perform(singleplot_all, include_expected)
 
 def plot_multis():
 	read_output_files_and_perform(multiplot)

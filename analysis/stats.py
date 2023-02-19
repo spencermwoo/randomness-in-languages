@@ -1,7 +1,7 @@
 import statistics as st
 import heapq
 
-from util import read_output_files_and_perform, perform_per_language
+from util import read_output_files_and_perform, perform_probability_per_language
 
 def calculate_standard_deviation(language, data, sample_size):
 	if language == 'expected': 
@@ -20,15 +20,14 @@ def analysis_one(languages, numbers, trials):
 	resHeap = []
 	heapq.heapify(resHeap)
 
-	for language, filename, x, y in perform_per_language(languages, numbers, trials):
+	for language, filename, x, y in perform_probability_per_language(languages, numbers, trials):
 		std = calculate_standard_deviation(language, y, trials)
 		heapq.heappush(resHeap, (std, filename))
 
 	# split by trial, however variance is already split
-	while resHeap:
-		print(heapq.heappop(resHeap))
+	return [heapq.heappop(resHeap) for i in range(len(resHeap))]
 
 def analysis_all():
-	read_output_files_and_perform(analysis_one)
+	analysisList = read_output_files_and_perform(analysis_one)
 
-# analysis_all()
+	return analysisList

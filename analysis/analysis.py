@@ -3,18 +3,16 @@ import argparse
 from stats import analysis_all
 from graph import plot_multis, plot_individuals, plot_analysis
 
-# Analyze statistics
-# ====
-analysis_all()
-
-# Generate graphs
+# Generate Graphs
 # ====
 # plot_individuals(True)
 # plot_multis()
 
 # Graph Analysis
 # ====
-# plot_analysis()
+# analysisList = analysis_all()
+# print(analysisList)
+# plot_analysis(analysisList)
 
 # ===
 # if __name__ == '__main__':

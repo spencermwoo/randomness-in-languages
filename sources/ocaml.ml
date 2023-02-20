@@ -14,7 +14,7 @@ let calculate_probabilities numbers n =
   probabilities
 
 let write_probabilities_to_file probabilities n x =
-  let filename = Printf.sprintf "ocaml_%d_%d.txt" x n in
+  let filename = Printf.sprintf "ocaml_%d_%d" x n in
   let oc = open_out filename in
   for i=1 to (Array.length probabilities - 1) do
     Printf.fprintf oc "%d: %.6f\n" i probabilities.(i)

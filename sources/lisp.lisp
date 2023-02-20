@@ -1,3 +1,4 @@
+;; sbcl --script lisp.lisp
 (defun main ()
   (let ((n 1000000)
         (x 1000))

@@ -1,8 +1,10 @@
+// scala
+// -J-Xmx50g
 import scala.util.Random
 import java.io.PrintWriter
 
-val N = 1000000
-val X = 1000
+val N = 1000000000
+val X = 10
 
 // Generate N random numbers between 1 and X
 val numbers = List.fill(N)(Random.nextInt(X) + 1)

@@ -2,39 +2,39 @@
 This folder holds the source code of programs used to generate [outputs](../outputs)
 
 # Completed Languages:
+ * ~~//ASM~~
  * ~~AutoHotKey~~
+ * ~~//BASH~~
  * ~~C~~
+ * ~~C++~~
+ * ~~C#~~
+ * ~~//CLOJ~~
+ * ~~Dart~~
+ * ~~Elixir~~
  * ~~Go~~
+ * ~~//HASK~~
  * ~~Java~~
  * ~~JavaScript~~
- * ~~Python~~
- * ~~OCAML~~
- * ~~dart~~
- * ~~PHP~~
- * ~~Swift~~
- * ~~Ruby~~
- * ~~C++~~
- * ~~Rust~~
- 
-
- * ~~Elixir~~
- * ~~Scala~~
- * ~~Perl~~
-
- * ~~LISP~~
  * ~~Kotlin~~
+ * ~~LISP/3~~
+ * ~~OCaml~~
+ * ~~Perl/3~~
+ * ~~PHP~~
+ * ~~//PRO~~
+ * ~~Python~~
+ * ~~//R~~
+ * ~~Ruby~~
+ * ~~Rust~~
+ * ~~Scala/3~~
+ * ~~Swift~~
  
 # Future Languages:
  * ActionScript
- * C#
- * Haskell
- * Prolog
- * Bash
  * random.org
- * Visual Basic
+ * Pascal
+ * Delphi
  * Erlang
- * MATLAB
+ * Powershell
+ * Matlab
+ * VisualBasic
  * etc
-
-
- kotlin

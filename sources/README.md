@@ -8,6 +8,11 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Java~~
  * ~~JavaScript~~
  * ~~Python~~
+ * ~~OCAML~~
+ * ~~dart~~
+ * ~~PHP~~
+
+ * ~~Perl~~
  
 # Future Languages:
  * ActionScript

@@ -1,27 +1,31 @@
-(* Set the number of random numbers to generate and the upper bound for the numbers *)
-let n = 10;;
-let x = 100;;
+let generate_random_numbers n x =
+  let numbers = Array.make (x+1) 0 in
+  for i=1 to n do
+    let r = Random.int x + 1 in
+    numbers.(r) <- numbers.(r) + 1
+  done;
+  numbers
 
-(* Generate N random numbers between 1 and X *)
-let numbers = List.init n (fun _ -> Random.int x + 1);;
+let calculate_probabilities numbers n =
+  let probabilities = Array.make (Array.length numbers) 0.0 in
+  for i=1 to (Array.length numbers - 1) do
+    probabilities.(i) <- float_of_int numbers.(i) /. float_of_int n
+  done;
+  probabilities
 
-(* Calculate the probability of each number *)
-let probabilities =
-  let total = List.length numbers in
-  let counts = List.fold_left (fun m n -> IntMap.add n (1 + (try IntMap.find n m with Not_found -> 0)) m) IntMap.empty numbers in
-  List.map (fun n -> float (IntMap.find n counts) /. float total) numbers;;
+let write_probabilities_to_file probabilities n x =
+  let filename = Printf.sprintf "ocaml_%d_%d.txt" x n in
+  let oc = open_out filename in
+  for i=1 to (Array.length probabilities - 1) do
+    Printf.fprintf oc "%d: %.6f\n" i probabilities.(i)
+  done;
+  close_out oc;
+  Printf.printf "Probabilities written to file %s.\n" filename
 
-(* Generate a file name based on the values of N and X *)
-let file_name = "ocaml_" ^ (string_of_int n) ^ "_" ^ (string_of_int x) ^ ".csv";;
-
-(* Create the "outputs" directory if it does not exist *)
 let () =
-  try
-    Unix.mkdir "outputs" 0o755
-  with
-    Unix.Unix_error (Unix.EEXIST, _, _) -> ()
-;;
-
-(* Write the probabilities to a file in the "outputs" directory *)
-let () =
-  let file = open_out ("outputs
+  let n = 1000000000 in
+  let x = 10 in
+  Random.self_init ();
+  let numbers = generate_random_numbers n x in
+  let probabilities = calculate_probabilities numbers n in
+  write_probabilities_to_file probabilities n x

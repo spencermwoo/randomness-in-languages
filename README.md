@@ -1,5 +1,5 @@
 # randomness-in-programming-languages
-An example of random number generation in different programming [languages](/sources#future-languages)
+An example of random number generation in different programming [languages](/sources#completed-languages)
 
 # hacktoberfest
 A hactoberfest-friendly project

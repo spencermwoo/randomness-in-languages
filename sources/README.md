@@ -22,7 +22,7 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~PHP~~
  * ~~//PRO~~
  * ~~Python~~
- * ~~//R~~
+ * ~~R~~
  * ~~Ruby~~
  * ~~Rust~~
  * ~~Scala/3~~

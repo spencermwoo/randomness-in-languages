@@ -12,6 +12,7 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~dart~~
  * ~~PHP~~
  * ~~Swift~~
+ * ~~Ruby~~
 
 
  * ~~Scala~~

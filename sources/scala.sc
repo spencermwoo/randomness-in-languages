@@ -1,27 +1,20 @@
-import java.io.File
+import scala.util.Random
+import java.io.PrintWriter
 
-// Set the number of random numbers to generate and the upper bound for the numbers
-val n = 10
-val x = 100
+val N = 1000000
+val X = 1000
 
 // Generate N random numbers between 1 and X
-val random = new scala.util.Random()
-val numbers = (1 to n).map(_ => random.nextInt(x) + 1)
+val numbers = List.fill(N)(Random.nextInt(X) + 1)
 
 // Calculate the probability of each number
-val counts = numbers.groupBy(identity).mapValues(_.size)
-val total = numbers.size
-val probabilities = counts.mapValues(_.toDouble / total)
+val probabilities = numbers.groupBy(identity).mapValues(_.size.toDouble / N)
 
-// Generate a file name based on the values of N and X
-val fileName = s"scala_$n\_$x.csv"
-
-// Create the "outputs" directory if it does not exist
-new File("outputs").mkdirs()
-
-// Write the probabilities to a file in the "outputs" directory
-val writer = new java.io.FileWriter(s"outputs/$fileName")
+// Output probabilities to a file
+val fileName = "scala_" + X + "_" + N
+val writer = new PrintWriter(fileName)
 probabilities.foreach { case (number, probability) =>
-  writer.write(s"$number,$probability\n")
+  writer.write(number + ":" + probability + "\n")
 }
 writer.close()
+println("Probabilities written to file " + fileName)

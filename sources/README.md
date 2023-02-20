@@ -13,20 +13,17 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~PHP~~
  * ~~Swift~~
 
+
+ * ~~Scala~~
  * ~~Perl~~
  
 # Future Languages:
  * ActionScript
- * C
  * C++
  * C#
  * Rust
  * Haskell
- * OCaml
- * Perl
- * PHP
  * Prolog
- * Swift
  * Bash
  * random.org
  * Visual Basic

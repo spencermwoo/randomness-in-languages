@@ -11,6 +11,7 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~OCAML~~
  * ~~dart~~
  * ~~PHP~~
+ * ~~Swift~~
 
  * ~~Perl~~
  

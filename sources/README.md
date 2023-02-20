@@ -14,6 +14,7 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Swift~~
  * ~~Ruby~~
  * ~~C++~~
+ * ~~Rust~~
  
 
  * ~~Elixir~~
@@ -21,12 +22,11 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Perl~~
 
  * ~~LISP~~
+ * ~~Kotlin~~
  
 # Future Languages:
  * ActionScript
- * C++
  * C#
- * Rust
  * Haskell
  * Prolog
  * Bash
@@ -35,3 +35,6 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * Erlang
  * MATLAB
  * etc
+
+
+ kotlin

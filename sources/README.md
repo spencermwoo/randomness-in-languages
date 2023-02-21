@@ -2,13 +2,12 @@
 This folder holds the source code of programs used to generate [outputs](../outputs)
 
 # Completed Languages:
- * ~~//ASM~~
  * ~~AutoHotKey~~
- * ~~//BASH~~
+ * ~~Bash/3~~
  * ~~C~~
  * ~~C++~~
  * ~~C#~~
- * ~~//CLOJ~~
+ * ~~Clojure~~
  * ~~Dart~~
  * ~~Elixir~~
  * ~~Go~~
@@ -16,11 +15,10 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Java~~
  * ~~JavaScript~~
  * ~~Kotlin~~
- * ~~LISP/3~~
+ * ~~Lisp/3~~
  * ~~OCaml~~
  * ~~Perl/3~~
  * ~~PHP~~
- * ~~//PRO~~
  * ~~Python~~
  * ~~R~~
  * ~~Ruby~~
@@ -29,12 +27,24 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Swift~~
  
 # Future Languages:
+ * Assembly
  * ActionScript
- * random.org
  * Pascal
  * Delphi
  * Erlang
  * Powershell
+ * Prolog
  * Matlab
  * VisualBasic
+ * Cobol
+ * F#
+ * Pascal
+ * Octave
+ * Groovy
+ * Lua
+ * D
+ * Fortran
+ * Web (?)
+ * DB (?)
+ * random.org (?)
  * etc

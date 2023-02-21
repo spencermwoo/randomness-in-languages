@@ -1,8 +1,5 @@
 <?php
 
-ini_set('max_execution_time', '300');
-set_time_limit(300);
-
 // Set the number of random numbers to generate and the upper bound for the numbers
 $N = 1000000000;
 $X = 10;

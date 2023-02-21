@@ -15,6 +15,10 @@ def read_output_files_and_perform(func, *args):
 
 	return r
 
+def write_to_file(filename, data):
+	with open(filename, 'w') as f:
+		f.write(data)
+
 # def calculate_probability(filename):
 # 	with open(filename) as file:
 # 		x, y = [], []
@@ -33,10 +37,11 @@ def perform_probability_per_language(languages, numbers, trials):
 		with open(filename) as file:
 			x, y = [], []
 			for line in file:
-				n, probability = parse(line)
+				if ":" in line:
+					n, probability = parse(line)
 
-				x.append(n)
-				y.append(probability)
+					x.append(n)
+					y.append(probability)
 
 			yield (language, filename, x,y)
 

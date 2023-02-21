@@ -1,24 +1,36 @@
 import Foundation
 
-// Set the number of random numbers to generate and the upper bound for the numbers
-let n = 10
-let x = 100
+let N = 1000000
+let X = 1000
 
 // Generate N random numbers between 1 and X
-let random = SystemRandomNumberGenerator()
-let numbers = (0..<n).map { _ in random.next() % x + 1 }
+var numbers = [Int]()
+for _ in 0..<N {
+    let number = Int.random(in: 1...X)
+    numbers.append(number)
+}
 
 // Calculate the probability of each number
-let counts = Dictionary(numbers.map { ($0, 1) }, uniquingKeysWith: +)
-let total = numbers.count
-let probabilities = counts.mapValues { $0 / Double(total) }
+var probabilities = [Int: Double]()
+for number in numbers {
+    if let count = probabilities[number] {
+        probabilities[number] = count + 1.0/Double(N)
+    } else {
+        probabilities[number] = 1.0/Double(N)
+    }
+}
 
-// Generate a file name based on the values of N and X
-let fileName = "swift_\(n)_\(x).csv"
-
-// Create the "outputs" directory if it does not exist
-try! FileManager.default.createDirectory(atPath: "outputs", withIntermediateDirectories: true)
-
-// Write the probabilities to a file in the "outputs" directory
-let output = probabilities.map { "\($0.key),\($0.value)" }.joined(separator: "\n")
-try! output.write(toFile: "outputs/\(fileName)", atomically: true, encoding: .utf8)
+// Output probabilities to a file
+let fileName = "swift_\(X)_\(N).txt"
+let filePath = FileManager.default.currentDirectoryPath + "/" + fileName
+let fileURL = URL(fileURLWithPath: filePath)
+var output = ""
+for number in probabilities.keys.sorted() {
+    output += "\(number): \(probabilities[number]!)\n"
+}
+do {
+    try output.write(to: fileURL, atomically: true, encoding: .utf8)
+    print("Probabilities written to file \(fileName)")
+} catch {
+    print("Error writing to file: \(error)")
+}

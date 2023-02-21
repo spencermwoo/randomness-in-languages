@@ -3,8 +3,8 @@ import 'dart:math';
 
 void main() {
   // Set the number of random numbers to generate and the upper bound for the numbers
-  final n = 10;
-  final x = 100;
+  final x = 1000;
+  final n = 1000000;
 
   // Generate N random numbers between 1 and X
   final random = Random();
@@ -19,14 +19,14 @@ void main() {
       .toList();
 
   // Generate a file name based on the values of N and X
-  final fileName = 'dart_$n_$x.csv';
+  final fileName = 'dart_${x}_${n}';
 
   // Create the "outputs" directory if it does not exist
-  Directory('outputs').create(recursive: true);
+  // Directory('outputs').create(recursive: true);
 
   // Write the probabilities to a file in the "outputs" directory
-  final file = File('outputs/$fileName');
+  final file = File('../outputs/$fileName');
   file.writeAsStringSync(probabilities
-      .map((e) => '${e.key},${e.value}\n')
+      .map((e) => '${e.key}:${e.value}\n')
       .join());
 }

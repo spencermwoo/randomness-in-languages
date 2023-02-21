@@ -10,21 +10,6 @@ fn main() {
     let range = Uniform::from(1..=x);
     let mut counts = vec![0; x];
 
-    // // Generate N random numbers between 1 and X
-    // let numbers: Vec<usize> = (0..N).map(|_| thread_rng().gen_range(1, X + 1)).collect();
-
-    // // Calculate the probability of each number
-    // let mut counts = HashMap::new();
-    // for number in &numbers {
-    //     *counts.entry(number).or_insert(0) += 1;
-    // }
-
-    // let total = numbers.len();
-    // let probabilities = numbers
-    //     .iter()
-    //     .map(|number| (number, *counts.get(number).unwrap() as f64 / total as f64))
-    //     .collect::<Vec<_>>();
-
     for _ in 0..n {
         let number = range.sample(&mut rng);
         counts[number - 1] += 1;

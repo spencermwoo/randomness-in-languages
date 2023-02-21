@@ -19,6 +19,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
+  "engines": {
+    "npm" : ">=9.3.1",
+    "node" : ">=18.14.0"
+  },
   "dependencies": {
     "@mdx-js/react": "^2.1.2",
     "gatsby": "^5.0.0",

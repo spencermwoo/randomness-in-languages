@@ -1,9 +1,5 @@
 #!/usr/bin/env perl
 
-use strict;
-use warnings;
-use autodie;
-
 # Set the number of random numbers to generate and the upper bound for the numbers
 my $n = 1000000000;
 my $x = 10;

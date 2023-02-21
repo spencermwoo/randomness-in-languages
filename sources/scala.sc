@@ -17,4 +17,3 @@ probabilities.foreach { case (number, probability) =>
   writer.write(number + ":" + probability + "\n")
 }
 writer.close()
-println("Probabilities written to file " + fileName)

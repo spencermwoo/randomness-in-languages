@@ -16,12 +16,12 @@ for count in "${counts[@]}"; do
 done
 
 # Generate a file name based on the values of N and X
-file_name="bash_$N_$X.csv"
+file_name="bash_$N_$X"
 
 # Create the "outputs" directory if it does not exist
-mkdir -p outputs
+# mkdir -p outputs
 
 # Write the probabilities to a file in the "outputs" directory
 for ((i = 0; i < $total; i++)); do
-    printf "%d,%f\n" "${numbers[$i]}" "${probabilities[$i]}" >> "outputs/$file_name"
+    printf "%d:%f\n" "${numbers[$i]}" "${probabilities[$i]}" >> "../outputs/$file_name"
 done

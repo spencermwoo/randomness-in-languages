@@ -17,13 +17,13 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * ~~Kotlin~~
  * ~~Lisp/3~~
  * ~~OCaml~~
- * ~~Perl/3~~
+ * ~~Perl~~
  * ~~PHP~~
  * ~~Python~~
  * ~~R~~
  * ~~Ruby~~
  * ~~Rust~~
- * ~~Scala/3~~
+ * ~~Scala~~
  * ~~Swift~~
  
 # Future Languages:

@@ -1,5 +1,3 @@
-// scala
-// -J-Xmx50g
 import scala.util.Random
 import java.io.PrintWriter
 

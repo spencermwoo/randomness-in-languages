@@ -1,7 +1,7 @@
-;; sbcl --script lisp.lisp
+;; sbcl --dynamic-space-size 2048 --script lisp.lisp
 (defun main ()
-  (let ((n 1000000)
-        (x 1000))
+  (let ((n 1000000000)
+        (x 10))
     ;; Generate N random numbers between 1 and X
     (let ((numbers (loop repeat n collect (random x))))
       ;; Calculate the probability of each number

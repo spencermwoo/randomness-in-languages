@@ -3,12 +3,41 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../../components/layout'
 
-const ResultsPage = ({data, children}) => {
-  console.log(data, children)
+// const fmtTrialResults(trial, dataNodes, mdxNodes) {
+
+// }
+
+// function testF(trial){
+//   const dataResults = dataNodes.filter(node => node.relativeDirectory.includes(trial))
+//   const analysisImage = mdxNodes.filter(node => node.frontmatter.analysis_image.relativeDirectory.includes(trial))
+//   const multiImage = mdxNodes.filter(node => node.frontmatter.multi_image.relativeDirectory.includes(trial))
+
+//   f = ''
+// }
+
+const ResultsPage = (props) => {
+  // console.log(data, children)
+  const {pageContext, data} = props
+  console.log(pageContext)
+  console.log(data)
+
+  const mdxNodes = data.allMdx.nodes;
+  const dataNodes = data.allFile.nodes;
+
+  const trialFolders = ['trial-one', 'trial-two', 'trial-three']
+
+  const results = [];
+  // trialFolders.map(trial => testF(trial, dataNodes, mdxNodes));
+  // const dataResults = dataNodes.filter(node => node.relativeDirectory.includes('trial-one'))
+  // const analysisImage = mdxNodes.filter(node => node.frontmatter.analysis_image.relativeDirectory.includes('trial-one'))
+  // const multiImage = mdxNodes.filter(node => node.frontmatter.multi_image.relativeDirectory.includes('trial-one'))
+
+  // const t1Nodes = 
+
   return (
     <Layout pageTitle="Results">
       {
-        data.allMdx.nodes.map((node) => (
+        mdxNodes.map((node) => (
           <article key={node.id}> 
             {node.frontmatter.title} 
             <GatsbyImage
@@ -19,8 +48,18 @@ const ResultsPage = ({data, children}) => {
               image={getImage(node.frontmatter.analysis_image)}
               alt=""
             />
-            {children}
-          </article>))
+          </article>
+        ))
+      }
+
+        {
+          dataNodes.map((node) => (
+          <pre>
+            <code>
+              {node.fields.contents}
+            </code>
+          </pre>
+        ))
       }
     </Layout>
   )
@@ -35,17 +74,29 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           title
           multi_image {
-	          childImageSharp {
-	            gatsbyImageData
-	          }
-	        }
+            childImageSharp {
+              gatsbyImageData
+            }
+            relativeDirectory
+          }
           analysis_image {
             childImageSharp {
               gatsbyImageData
             }
+            relativeDirectory
           }
         }
         id
+      }
+    }
+    allFile(filter: {relativePath: {regex: "/(results)/"}, extension: {eq: ""}}) {
+      nodes {
+        name
+        extension
+        fields {
+          contents
+        }
+        relativeDirectory
       }
     }
   }

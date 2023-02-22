@@ -51,10 +51,10 @@ def analysis_graphs():
 
 	try:
 		for filename in ls:
-			if '.png' not in filename: continue
+			if 'data' not in filename and '.png' not in filename: continue
 			if '_' not in filename: continue
 
-			language, nums, trials = filename.split("_")
+			language, nums, trials, *others = filename.split("_")
 
 			if language == 'expected': continue
 

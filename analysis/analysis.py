@@ -1,6 +1,6 @@
 import argparse
 
-from stats import analysis_all
+from stats import analysis_all, write_analysis
 from graph import plot_multis, plot_individuals, plot_analysis
 
 # Generate Graphs
@@ -11,6 +11,7 @@ plot_multis()
 # Graph Analysis
 # ====
 analysisList = analysis_all()
+write_analysis(analysisList)
 plot_analysis(analysisList)
 
 # ===

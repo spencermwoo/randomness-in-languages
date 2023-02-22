@@ -1,8 +1,11 @@
 # randomness-in-programming-languages
-An example of random number generation in different programming [languages](/sources#future-languages)
+An example of random number generation in different programming [languages](/sources#completed-languages)
 
 # hacktoberfest
 A hactoberfest-friendly project
+
+# file structure
+Overview of folder layout
 
 ## Contribute
 Create an example of generating a million random numbers and calculating the percentage for each bucket.  

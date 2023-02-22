@@ -1,48 +1,27 @@
+# Import the `random` and `csv` modules, and the `os` module for working with directories
 import random
-import time
-import argparse
+import csv
+import os
 
-def prng(numbers, trials):
-	frequency = [0] * numbers;
-	probability = [0.0] * numbers;
+# Set the number of random numbers to generate and the upper bound for the numbers
+N = 10
+X = 100
 
+# Generate N random numbers between 1 and X
+numbers = [random.randint(1, X) for _ in range(N)]
 
-	start_time = time.time()
-	
-	for x in range(0, trials):
-		r_number = random.randint(0, numbers-1);
-		frequency[r_number] += 1;
+# Calculate the probability of each number
+total = len(numbers)
+probabilities = [numbers.count(x) / total for x in numbers]
 
-	output = "";
-	for y in range(0, numbers):
-		if(frequency[y] == 0):
-			output += f'{y} : 0\n';
-		else:
-			probability[y] = frequency[y] / float (trials);
-			output += f'{y} : {probability[y]}\n';
+# Generate a file name based on the values of N and X
+file_name = f"python_{N}_{X}"
 
+# Create the "outputs" directory if it does not exist
+# if not os.path.exists("outputs"):
+#     os.makedirs("outputs")
 
-	duration = time.time() - start_time
-
-	filename = f'python_{numbers}_{trials}.txt';
-
-	with open(filename, 'w') as f:
-		f.write(output);
-
-	print("--- %s seconds ---" % duration);
-	return None;
-
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='argparse')
-	parser._action_groups.pop()
-
-	required = parser.add_argument_group('required arguments')
-	required.add_argument('--range', type=int, default=1000, required=True)
-	required.add_argument('--trials', type=int, default=1000000, required=True)
-
-	args = parser.parse_args()
-
-	numbers = args.range
-	trials = args.trials
-
-	prng(numbers, trials)
+# Write the probabilities to a file in the "outputs" directory
+with open(os.path.join("../outputs", file_name), "w") as f:
+    writer = csv.writer(f)
+    writer.writerows(zip(numbers, probabilities))

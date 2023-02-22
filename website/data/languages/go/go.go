@@ -1,55 +1,54 @@
 package main
 
 import (
-	"strings"
-	"fmt"
-	"math/rand"
-	"time"
-	"os"
+    "math/rand"
+    "strconv"
+    "time"
 )
 
 func main() {
-	numbers := 10
-	trials := 1000000
+    // Set the number of random numbers to generate and the upper bound for the numbers
+    n := 10
+    x := 100
 
-	prng(numbers, trials)
-}
+    // Generate N random numbers between 1 and X
+    rand.Seed(time.Now().UnixNano())
+    numbers := make([]int, n)
+    for i := range numbers {
+        numbers[i] = rand.Intn(x) + 1
+    }
 
-func prng(numbers int, trials int) {
+    // Calculate the probability of each number
+    counts := make(map[int]int)
+    for _, number := range numbers {
+        counts[number]++
+    }
+    total := len(numbers)
+    probabilities := make(map[int]float64)
+    for number, count := range counts {
+        probabilities[number] = float64(count) / float64(total)
+    }
 
-	// initialize frequency
-	m := make(map[int]int)
-	
-	seed := rand.NewSource(time.Now().UnixNano())
-	r := rand.New(seed)
-	
-	var sb strings.Builder
+    // Generate a file name based on the values of N and X
+    fileName := "go_" + strconv.Itoa(n) + "_" + strconv.Itoa(x)
 
-	// frequency
-	for i := 0; i < trials; i++ {
-		m[r.Intn(numbers)] += 1
-	}
+    // Create the "outputs" directory if it does not exist
+    err := os.MkdirAll("../outputs", 0755)
+    if err != nil {
+        panic(err)
+    }
 
-	for n := 0; n < numbers; n++ {
-		percentage := float64(m[n]) / float64(trials)
-		sb.WriteString(fmt.Sprintf("%d:%f\n",n,percentage))
-	}
+    // Write the probabilities to a file in the "outputs" directory
+    file, err := os.Create("../outputs/" + fileName)
+    if err != nil {
+        panic(err)
+    }
+    defer file.Close()
 
-	filename := fmt.Sprintf("go_%d_%d",numbers,trials)
-
-	write(filename, sb.String())
-}
-
-func write(filename, s string) {
-	f, err := os.Create(fmt.Sprintf("../data/%s", filename))
-	check(err)
-	defer f.Close()
-
-	f.WriteString(s)
-}
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
+    for number, probability := range probabilities {
+        _, err := file.WriteString(strconv.Itoa(number) + "," + strconv.FormatFloat(probability, 'f', -1, 64) + "\n")
+        if err != nil {
+            panic(err)
+        }
+    }
 }

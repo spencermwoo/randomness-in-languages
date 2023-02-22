@@ -1,27 +1,17 @@
 #!/bin/bash
 
-# Set the number of random numbers to generate and the upper bound for the numbers
-N=10
-X=100
+# better optimization is generate numbers of full set and split on digits, but that defeats the purpose of the trials
+# PRNG on small num value range
 
-# Generate N random numbers between 1 and X
-numbers=($(shuf -i 1-$X -n $N))
+N=1000000
+X=1000
+OUTPUT_FILE="bash_${X}_${N}"
 
-# Calculate the probability of each number
-counts=($(printf "%s\n" "${numbers[@]}" | sort -n | uniq -c | awk '{print $1}'))
-total=${#numbers[@]}
-probabilities=()
-for count in "${counts[@]}"; do
-    probabilities+=("$((count / total))")
+counts=()
+
+for ((i=0; i<N; i++)); do
+  r=$(( $RANDOM % X ));
+  (( counts[r]++ ))
 done
 
-# Generate a file name based on the values of N and X
-file_name="bash_$N_$X.csv"
-
-# Create the "outputs" directory if it does not exist
-mkdir -p outputs
-
-# Write the probabilities to a file in the "outputs" directory
-for ((i = 0; i < $total; i++)); do
-    printf "%d,%f\n" "${numbers[$i]}" "${probabilities[$i]}" >> "outputs/$file_name"
-done
+echo "${counts[@]}" > "$OUTPUT_FILE"

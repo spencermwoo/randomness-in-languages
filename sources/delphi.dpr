@@ -50,15 +50,15 @@ end;
 // Generate a file name based on the values of N and X
 function GenerateFileName: string;
 begin
-  Result := Format('delphi%d%d.csv', [N, X]);
+  Result := Format('delphi_%d_%d', [N, X]);
 end;
 
 // Create the "outputs" directory if it does not exist
-procedure CreateOutputDirectory;
-begin
-  if not DirectoryExists('outputs') then
-    CreateDir('outputs');
-end;
+// procedure CreateOutputDirectory;
+// begin
+//   if not DirectoryExists('outputs') then
+//     CreateDir('outputs');
+// end;
 
 // Write the probabilities to a file in the "outputs" directory
 procedure WriteProbabilities(const probabilities: TArray<Double>);
@@ -68,7 +68,7 @@ var
   i: Integer;
 begin
   fileName := GenerateFileName;
-  AssignFile(file, 'outputs\' + fileName);
+  AssignFile(file, '../outputs\' + fileName);
   try
     Rewrite(file);
     for i := 0 to X - 1 do

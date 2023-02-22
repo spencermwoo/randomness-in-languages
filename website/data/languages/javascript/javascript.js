@@ -1,40 +1,33 @@
 const fs = require('fs');
 
-const getRandomInt = (max) => {
-	return Math.floor(Math.random() * max);
-};
-const prng = (numbers, trials) => {
-	const frequency = {};
-	const probability = {};
-	const output = [];
+// Set the number of random numbers to generate and the upper bound for the numbers
+const n = 10;
+const x = 100;
 
-	for (let i = 0; i < trials; i++) {
-		const randomInt = getRandomInt(numbers);
-		if (frequency[randomInt] == null) {
-			frequency[randomInt] = 0;
-		}
-		frequency[randomInt] += 1;
-	}
+// Generate N random numbers between 1 and X
+const numbers = Array.from({ length: n }, () => Math.floor(Math.random() * x) + 1);
 
-	for (const number in Object.keys(frequency)) {
-		probability[number] = frequency[number] / trials;
-		output.push(`${number}:${probability[number]}`);
-	}
+// Calculate the probability of each number
+const counts = numbers.reduce((counts, number) => {
+  counts[number] = (counts[number] || 0) + 1;
+  return counts;
+}, {});
+const total = numbers.length;
+const probabilities = Object.keys(counts).reduce((probabilities, number) => {
+  probabilities[number] = counts[number] / total;
+  return probabilities;
+}, {});
 
-	const filename = `js_${numbers}_${trials}`;
-	const outputString = output.join('\n');
+// Generate a file name based on the values of N and X
+const fileName = `javascript_${n}_${x}`;
 
-	writeOutputToFile(filename, outputString);
-};
-const writeOutputToFile = (filename, content) => {
-	try {
-		fs.writeFileSync(filename, content);
-	} catch (err) {
-		console.error(err);
-	}
-};
-const main = (() => {
-	prng(10, 1000000);
-	prng(1000, 1000000);
-	prng(10, 1000000000);
-})();
+// Create the "outputs" directory if it does not exist
+// if (!fs.existsSync('outputs')) {
+//   fs.mkdirSync('outputs');
+// }
+
+// Write the probabilities to a file in the "outputs" directory
+const output = Object.keys(probabilities)
+  .map(number => `${number}:${probabilities[number]}`)
+  .join('\n');
+fs.writeFileSync(`../outputs/${fileName}`, output);

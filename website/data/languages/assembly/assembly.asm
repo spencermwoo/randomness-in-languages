@@ -1,58 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+.section __TEXT,__text
+.globl _start
 
-// Set the number of random numbers to generate and the upper bound for the numbers
-#define N 10
-#define X 100
-
-// Generate N random numbers between 1 and X
-int* generateNumbers() {
-    // Initialize the random number generator with a seed based on the current time
-    srand(time(NULL));
-
-    // Allocate memory for the array of numbers
-    int* numbers = (int*)malloc(N * sizeof(int));
-
-    // Generate the random numbers and store them in the array
-    for (int i = 0; i < N; i++) {
-        numbers[i] = rand() % X + 1;
-    }
-
-    return numbers;
-}
-
-// Calculate the probability of each number
-int* calculateProbabilities(int* numbers) {
-    // Allocate memory for the array of probabilities
-    int* probabilities = (int*)calloc(X, sizeof(int));
-
-    // Calculate the probability of each number
-    for (int i = 0; i < N; i++) {
-        probabilities[numbers[i] - 1]++;
-    }
-
-    return probabilities;
-}
-
-int main() {
-    // Generate the random numbers
-    int* numbers = generateNumbers();
-
-    // Calculate the probabilities
-    int* probabilities = calculateProbabilities(numbers);
-
-    // Generate a file name based on the values of N and X
-    char fileName[100];
-    sprintf(fileName, "c_%d_%d.csv", N, X);
-
-    // Write the probabilities to a file in the "outputs" directory
-    FILE* file = fopen("outputs/", fileName);
-    for (int i = 0; i < X; i++) {
-        fprintf(file, "%d,%d\n", i + 1, probabilities[i]);
-    }
-    fclose(file);
-
-    // Free the memory used by the arrays of numbers and probabilities
-    free(numbers);
-   
+_start:
+    movl $0, %eax          # Set up counter
+    movl $0x64, %ebx          # Set up loop count
+    movl $0xA, %ecx          # Set up max value
+    leaq numbers(%rip), %rdi     # Set up array address using RIP-relative addressing
+    
+init:
+    movl $0, %edx          # Generate a random number between 0 and X-1
+    movl $0x7fffffff, %eax
+    xor %rdx, %rdx
+    div %ecx
+    inc %edx
+    
+    movl %edx, (%rdi,%rax,4)     # Store the number in the array
+    
+    inc %eax                # Increment the counter
+    cmp %ebx, %eax          # Compare the counter to the loop count
+    jne init                # Loop until counter == loop count
+    
+    movq $1, %rax           # Open a file for writing
+    leaq filename(%rip), %rdi
+    movq $0x0202, %rsi
+    movq $0x1a4, %rdx
+    syscall
+    
+    movq %rax, %rdi         # Write the output to the file
+    leaq numbers(%rip), %rsi
+    movq $4*0x64, %rdx
+    movq $0x0201, %rax
+    syscall
+    
+    movq $0, %rdi           # Exit
+    movq $0x2000001, %rax
+    syscall
+    
+.section __DATA,__data
+numbers:
+    .space 0x64*4
+    
+.section __DATA,__const
+filename:
+    .asciz "assembly_X_N"

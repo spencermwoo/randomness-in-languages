@@ -6,8 +6,10 @@
 #include <string>
 #include <vector>
 
-const int N = 10;
-const int X = 100;
+const int N = 1000000;
+const int X = 1000;
+
+// g++ -std=c++17 cplus.cc -o cc
 
 // Generate N random numbers between 1 and X
 std::vector<int> generate_random_numbers()
@@ -46,7 +48,7 @@ std::map<int, double> calculate_probabilities(const std::vector<int> &numbers)
 // Generate a file name based on the values of N and X
 std::string generate_file_name()
 {
-    return "cplus_" + std::to_string(N) + "_" + std::to_string(X) + ".csv";
+    return "cplus_" + std::to_string(X) + "_" + std::to_string(N);
 }
 
 int main()
@@ -57,13 +59,13 @@ int main()
 
     // Generate a file name and create the "outputs" directory if it does not exist
     auto file_name = generate_file_name();
-    std::filesystem::create_directories("outputs");
+    // std::filesystem::create_directories("outputs");
 
     // Write the probabilities to a file in the "outputs" directory
-    std::ofstream file("outputs/" + file_name);
+    std::ofstream file("../outputs/" + file_name);
     for (const auto &kvp : probabilities)
     {
-        file << kvp.first << "," << kvp.second << "\n";
+        file << kvp.first << ":" << kvp.second << "\n";
     }
 
     return 0;

@@ -3,26 +3,48 @@ This folder holds the source code of programs used to generate [outputs](../outp
 
 # Completed Languages:
  * ~~AutoHotKey~~
+ * ~~bash~~
+ * ~~C~~
+ * ~~C++~~
+ * ~~C#~~
+ * ~~Clojure~~
+ * ~~Dart~~
+ * ~~Elixir~~
  * ~~Go~~
+ * ~~Haskell~~
  * ~~Java~~
  * ~~JavaScript~~
+ * ~~Kotlin~~
+ * ~~Lisp/3~~
+ * ~~OCaml~~
+ * ~~Perl~~
+ * ~~PHP~~
  * ~~Python~~
+ * ~~R~~
+ * ~~Ruby~~
+ * ~~Rust~~
+ * ~~Scala~~
+ * ~~Swift~~
  
 # Future Languages:
+ * Assembly
  * ActionScript
- * C
- * C++
- * C#
- * Rust
- * Haskell
- * OCaml
- * Perl
- * PHP
- * Prolog
- * Swift
- * Bash
- * random.org
- * Visual Basic
+ * Pascal
+ * Delphi
  * Erlang
- * MATLAB
+ * Powershell
+ * Prolog
+ * Matlab
+ * VisualBasic
+ * Cobol
+ * F#
+ * Pascal
+ * Octave
+ * Groovy
+ * Lua
+ * D
+ * Fortran
+ * Web (?)
+ * DB (?)
+ * random.org (?)
  * etc

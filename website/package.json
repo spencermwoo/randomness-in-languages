@@ -6,11 +6,10 @@
   "author": "Spencer Woo",
   "keywords": [
     "PRNG Analysis",
-    "Analysis",
-    "Spencer",
-    "spencers.dev",
-    "randomness",
-    "statistics"
+    "randomness-in-programming-languages",
+    "randomness-in-languages",
+    "akrasia.dev",
+    "prng.akrasia.dev"
   ],
   "scripts": {
     "dev": "npm run develop",
@@ -19,6 +18,10 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
+  },
+  "engines": {
+    "npm" : ">=9.3.1",
+    "node" : ">=18.14.0"
   },
   "dependencies": {
     "@mdx-js/react": "^2.1.2",

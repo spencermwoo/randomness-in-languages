@@ -1,5 +1,7 @@
 # randomness-in-programming-languages
-An example of random number generation in different programming [languages](/sources#completed-languages)
+An example of random number generation in different programming [languages](/sources#completed-languages).
+
+Currently hosted at https://prng.akrasia.dev/
 
 # hacktoberfest
 A hactoberfest-friendly project

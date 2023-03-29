@@ -4,10 +4,12 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 
+let language = '';
+
 const LanguagesPost = (props) => {
   // console.log(props)
   const {pageContext, data} = props
-  const language = pageContext['name']
+  language = pageContext['name']
 
   if(!language){
     return
@@ -76,6 +78,6 @@ export const query = graphql`
   }
 `
 
-export const Head = ({ data }) => <Seo title='TODO' />
+export const Head = ({ data }) => <Seo title={language} />
 
 export default LanguagesPost

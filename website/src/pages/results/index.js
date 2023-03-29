@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../../components/layout'
+import Seo from '../../components/seo'
 
 // const fmtTrialResults(trial, dataNodes, mdxNodes) {
 
@@ -101,5 +102,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title="Results" />
 
 export default ResultsPage
